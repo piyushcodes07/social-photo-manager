@@ -4,13 +4,12 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt"
 import * as jose from 'jose'
 import { setCookie } from "cookies-next";
-import { useRouter } from 'next/navigation'
 export default async function handler(
 
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    const router = useRouter()
+ 
     const prisma =new PrismaClient()
   if (req.method === "POST") {
     const { fname,lname,email,password } = req.body;
@@ -73,7 +72,7 @@ export default async function handler(
         last_name:lname,
         password:hashedPassword,
         email:email
-      }  
+      }
     })
 
     const secret = new TextEncoder().encode(
@@ -89,8 +88,10 @@ export default async function handler(
     setCookie('jwt',jwt,{req,res,maxAge: 60*6*24 })
 
     res.status(200).json({
-        User
+        User,
+        redirect:true,
+        targetUrl: '/main'
     });
-    router.push('/main', { scroll: false })
+  
   }
 }
