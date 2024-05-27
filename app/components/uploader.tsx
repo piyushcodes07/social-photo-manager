@@ -9,10 +9,10 @@ import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector';
 export default function AvatarUploadPage() {
 
   
-  const userId  = useSelector(selectData).id
+  const userId  = useSelector(selectData).user.id
 
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const [blob, setBlob] = useState<PutBlobResult | null>(null);
+  const [blob, setBlob] = useState<any | null>(null);
 
   return (
     <>
@@ -37,7 +37,9 @@ export default function AvatarUploadPage() {
             }
           );
 
-          const newBlob = (await response.json()) as PutBlobResult;
+          const newBlob = (await response.json()) ;
+          console.log(newBlob);
+          
          
 
           setBlob(newBlob);
@@ -62,8 +64,8 @@ export default function AvatarUploadPage() {
         {blob && (
           <div>
             <span className="text-gray-700 mr-2">Blob url:</span>
-            <a href={blob.url} className="text-blue-500 hover:underline">
-              {blob.url}
+            <a href={`http://localhost:3000/photos/${blob.prismaPhoto.id}`} className="text-blue-500 hover:underline">
+            {`http://localhost:3000/photos/${blob.prismaPhoto.id}`}
             </a>
           </div>
         )}

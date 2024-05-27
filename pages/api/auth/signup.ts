@@ -66,7 +66,7 @@ export default async function handler(
 
     const hashedPassword = await bcrypt.hash(password,10)
 
-    const User = await prisma.user.create({
+    const user = await prisma.user.create({
       data:{
         first_name:fname,
         last_name:lname,
@@ -80,7 +80,7 @@ export default async function handler(
       )
       const alg = 'HS256'
       
-      const jwt = await new jose.SignJWT({ email:User.email })
+      const jwt = await new jose.SignJWT({ email:user.email })
         .setProtectedHeader({ alg })
         .setExpirationTime('2h')
         .sign(secret)
@@ -88,9 +88,7 @@ export default async function handler(
     setCookie('jwt',jwt,{req,res,maxAge: 60*6*24 })
 
     res.status(200).json({
-        User,
-        redirect:true,
-        targetUrl: '/main'
+        user,
     });
   
   }

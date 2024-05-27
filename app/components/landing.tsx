@@ -10,8 +10,11 @@ export default function Landing(){
     const user = useSelector(selectData)
     
     if(user){
+        console.log(user,"user from home");
+        
         return(
         <div>
+            {/* <h3>{`hello${user.user.id}`}</h3> */}
     <AvatarUploadPage/>
         </div>
         )

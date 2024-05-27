@@ -72,7 +72,7 @@ export default function SigninModal() {
 
   
 
-if(!user){
+
   return (
     <div>
         <Box sx={style}>
@@ -134,6 +134,5 @@ if(!user){
     </div>
   )
 
-}
   ;
 }

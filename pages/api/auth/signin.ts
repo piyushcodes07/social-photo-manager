@@ -77,12 +77,15 @@ export default async function handler(
         setCookie('jwt',jwt,{req,res,maxAge: 60*6*24 })
 
      res.status(200).json({
+      user:{
         id:userWithEmail.id,
         firstName:userWithEmail.first_name,
         lastName:userWithEmail.last_name,
         email:userWithEmail.email,
         redirect:true,
         targetUrl: '/main'
+      }
+        
       });
 
 

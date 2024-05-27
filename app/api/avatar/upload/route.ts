@@ -1,6 +1,7 @@
 import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { log } from 'console';
 
 export async function POST(request: Request): Promise<NextResponse> {
 
@@ -9,9 +10,11 @@ export async function POST(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url);
   const filename = searchParams.get('filename');
   const userId = Number(searchParams.get('id'))
+  console.log("user id",userId);
+  
     console.log("");
     
-  // ⚠️ The below code is for App Router Route Handlers only
+
   if(filename&&request.body){
     console.log("i ran");
     
@@ -19,22 +22,19 @@ export async function POST(request: Request): Promise<NextResponse> {
         access: 'public',
       });
     
-      // Here's the code for Pages API Routes:
-      // const blob = await put(filename, request, {
-      //   access: 'public',
-      // });
+ 
     console.log(blob.url,userId);
     
     const prismaPhoto = await prisma.photo.create({
         data:{
           photoURL:blob.url,
-          userID:Math.floor(userId),
+          userID:(userId),
           viewCount:0
         }
       })   
       console.log(prismaPhoto);
       
-      return NextResponse.json(blob);
+      return NextResponse.json({blob,prismaPhoto});
   }
   else{
     return NextResponse.json({"error":"bad request"})
@@ -42,9 +42,3 @@ export async function POST(request: Request): Promise<NextResponse> {
  
 }
 
-// The next lines are required for Pages API Routes only
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
