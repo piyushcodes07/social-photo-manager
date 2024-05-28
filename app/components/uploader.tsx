@@ -16,7 +16,7 @@ export default function AvatarUploadPage() {
   
   return (
     <>
-      <h1 className="text-3xl font-bold mb-4">Upload Your Image</h1>
+      <h1 className="text-3xl font-bold mb-4">Upload Image</h1>
 
       <form
         onSubmit={async (event) => {
