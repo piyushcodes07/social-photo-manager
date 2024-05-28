@@ -1,7 +1,6 @@
 
 import type { PutBlobResult } from '@vercel/blob';
 import { useState, useRef } from 'react';
-import { PrismaClient } from '@prisma/client';
 import { selectData } from '../redux/auth/authSlice';
 import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector';
 import Image from 'next/image';
@@ -14,7 +13,7 @@ export default function AvatarUploadPage() {
 
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<any | null>(null);
-
+  
   return (
     <>
       <h1 className="text-3xl font-bold mb-4">Upload Your Image</h1>
@@ -63,13 +62,14 @@ export default function AvatarUploadPage() {
           </button>
         </div>
         {blob && (
-          <div>
+          <div className=' p-3 bg-blue-300 rounded'>
             <span className="text-gray-700 mr-2">Blob url:</span>
             <a href={`http://localhost:3000/photos/${blob.prismaPhoto.id}`} className="text-blue-500 hover:underline">
             {`http://localhost:3000/photos/${blob.prismaPhoto.id}`}
             </a>
             <Image
-            src={blob.blob.photoURL}
+            className='mt-2'
+            src={blob.blob.url}
             width={400}
             height={400}
             alt=''
