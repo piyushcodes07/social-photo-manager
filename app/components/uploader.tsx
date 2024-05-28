@@ -64,8 +64,8 @@ export default function AvatarUploadPage() {
         {blob && (
           <div className=' p-3 bg-blue-300 rounded'>
             <span className="text-gray-700 mr-2">Blob url:</span>
-            <a href={`http://localhost:3000/photos/${blob.prismaPhoto.id}`} className="text-blue-500 hover:underline">
-            {`http://localhost:3000/photos/${blob.prismaPhoto.id}`}
+            <a href={`https://social-photo-manager.vercel.app/photos/${blob.prismaPhoto.id}`} className="text-blue-500 hover:underline">
+            {`https://social-photo-manager.vercel.app/photos/${blob.prismaPhoto.id}`}
             </a>
             <Image
             className='mt-2'

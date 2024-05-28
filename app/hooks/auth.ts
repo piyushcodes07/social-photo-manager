@@ -16,7 +16,7 @@ export default function auth() {
     dispatch(setLoading(true));
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/signin",
+        `https://social-photo-manager.vercel.app/api/auth/signin`,
         {
           email,
           password,
@@ -45,7 +45,7 @@ export default function auth() {
     dispatch(setLoading(true));
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/signup",
+        `https://social-photo-manager.vercel.app/api/auth/signup`,
         {
             fname:firstName,lname:lastName,email:email,password:password
         }

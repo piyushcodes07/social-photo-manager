@@ -57,7 +57,7 @@ export default function AuthContext({
         });
       }
 
-      const response = await axios.get("http://localhost:3000/api/auth/me", {
+      const response = await axios.get(`https://social-photo-manager.vercel.app/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },

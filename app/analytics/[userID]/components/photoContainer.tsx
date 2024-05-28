@@ -14,7 +14,7 @@ export default function PhotoContainer(props:any){
             <h2 className=" font-medium">
                 View count {props.photo.viewCount}
             </h2>
-            <a href={`http://localhost:3000/photos/${props.photo.id}`}>{`http://localhost:3000/photos/${props.photo.id}`}</a>
+            <a href={`https://social-photo-manager.vercel.app/photos/${props.photo.id}`}>{`https://social-photo-manager.vercel.app/photos/${props.photo.id}`}</a>
         </div>
     )
 }
