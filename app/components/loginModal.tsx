@@ -89,7 +89,7 @@ export default function SignUpModal() {
             Create account
           </h1>
           <div>
-            <h2 className="font-light text-center text-2xl">Create Your Oppentable Account</h2>
+            <h2 className="font-light text-center text-2xl">Create Your Social Photo</h2>
           </div>
           <div className="flex flex-row mt-5 gap-2">
             <div>
