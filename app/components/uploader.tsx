@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { PrismaClient } from '@prisma/client';
 import { selectData } from '../redux/auth/authSlice';
 import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector';
+import Image from 'next/image';
 
 
 export default function AvatarUploadPage() {
@@ -67,6 +68,12 @@ export default function AvatarUploadPage() {
             <a href={`http://localhost:3000/photos/${blob.prismaPhoto.id}`} className="text-blue-500 hover:underline">
             {`http://localhost:3000/photos/${blob.prismaPhoto.id}`}
             </a>
+            <Image
+            src={blob.blob.photoURL}
+            width={400}
+            height={400}
+            alt=''
+            />
           </div>
         )}
       </form>

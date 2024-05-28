@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["mucpots7imspazuf.public.blob.vercel-storage.com"],
+    domains: ["mucpots7imspazuf.public.blob.vercel-storage.com","sdqytielufgufjoj.public.blob.vercel-storage.com"],
   }
 }
 
